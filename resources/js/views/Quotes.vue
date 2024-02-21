@@ -22,8 +22,8 @@
 							<tr class="dataLine" :class="{chosen : selectedItem == index}" @click="selectedItem = index" :key="index" v-for="(item,index) in elementArray">
 								<td>{{item.tbl_export_import_land_Operator_carrier}}</td>
 								<td v-if="pickup != ''">{{pickup}}</td>
-								<td>{{isExport ? item.tbl_export_import_land_Departure_Port : item.tbl_export_import_land_Departure_Port}}</td>
-								<td>{{isExport ? item.tbl_export_import_land_Destination_Port : item.tbl_land_tariff_Destination_Port}}</td>
+								<td>{{urlParams.get("Departure_Port")}}</td>
+								<td>{{urlParams.get("Destination_Port")}}</td>
 								<td>{{isExport ? item.tbl_land_tariff_Via : item.tbl_export_import_land_Via}}<br>{{isExport ? item.tbl_export_import_land_Via : item.tbl_land_tariff_Via}}</td>
 								<td>{{item.tbl_export_import_land_TT}}</td>
 								<td>{{parseInt(item.tbl_land_tariff_TT) + parseInt(item.tbl_export_import_land_TT)}}</td>
@@ -134,6 +134,7 @@ export default {
 			selectedItem,
 			headerArray,
 			selectedHeader,
+			urlParams,
 			orderClick,
 			pickup,
 			reroute,

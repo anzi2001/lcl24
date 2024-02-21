@@ -56,25 +56,25 @@ class QuotePrice{
 	}
 
 	static function calculatePreOnCarriage($element,$request){
-		$preOnCariage = 0;
+		$preOnCarriage = 0;
 		$dividedWeight = $request->Weight / 1000.00 / $request->Cargo_volume;
 		if($request->queryType == "selling"){
 			$WMRatio2 = $element->tbl_land_tariff_WM_ratio / 1000;
 			$minPrice2 = $element->tbl_land_tariff_Min_price + $element->tbl_land_tariff_Departure_Port_thc;
-			$preCarriage = $element->tbl_land_tariff_Pre_carriage_price + $element->tbl_land_tariff_Departure_Port_thc;
-			$preCarriage = self::preOnCarriageWeight($dividedWeight, $WMRatio2, $minPrice2, $preCarriage, $request, $element);
+			$preOnCarriage = $element->tbl_land_tariff_Pre_carriage_price + $element->tbl_land_tariff_Departure_Port_thc;
+			$preOnCarriage = self::preOnCarriageWeight($dividedWeight, $WMRatio2, $minPrice2, $preOnCarriage, $request, $element);
 		}
 		else{
 			$WMRatio2 = $element->tbl_land_tariff_WM_ratio / 1000;
 			$minPrice2 = $element->tbl_land_tariff_Min_price;
-			$preCarriage = $element->tbl_land_tariff_Pre_carriage_price;
-			$preCarriage = self::preOnCarriageWeight($dividedWeight, $WMRatio2, $minPrice2, $preCarriage, $request, $element);
+			$preOnCarriage = $element->tbl_land_tariff_Pre_carriage_price;
+			$preOnCarriage = self::preOnCarriageWeight($dividedWeight, $WMRatio2, $minPrice2, $preOnCarriage, $request, $element);
 		}
 		if ($request->Departure_Port == "LJUBLJANA [SI]" && $element->tbl_land_tariff_Via == "KOPER [SI]" && ($request->Pickup != '')) {
-			$preOnCariage = 0;
+			$preOnCarriage = 0;
 		}
 
-		return $preOnCariage;
+		return $preOnCarriage;
 		
 	}
 
