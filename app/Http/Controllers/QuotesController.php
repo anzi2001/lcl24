@@ -38,7 +38,12 @@ class QuotesController extends Controller{
 		foreach($resp as $item){
 			$item->calculatedWeight = QuotePrice::calculateWeight($item,$request) * 1.1;
 		}
-		return response()->json($resp);
+		//find only one value Operator_carrier with lowest calculatedWeight
+		$resp = $resp->groupBy('tbl_export_import_land_Operator_carrier');
+		$resp = $resp->map(function($group){
+			return $group->sortBy('calculatedWeight')->first();
+		});
+		return response()->json($resp->flatten());
 	}
 	public function quotesDetail(Request $request){
 		if($request->session()->token() != csrf_token()){
@@ -128,7 +133,11 @@ class QuotesController extends Controller{
 			$item->fullFreightRate = round($fullFreightRate * 1.1,2);
 			$item->totalPrice = round(($item->fullFreightRate + $item->fullTaxes),2);
 		}
-		return response()->json($resp);
+		$resp = $resp->groupBy('tbl_export_import_land_Operator_carrier');
+		$resp = $resp->map(function($group){
+			return $group->sortBy('totalPrice')->first();
+		});
+		return response()->json($resp->flatten());
 	}
 
 	public static function quotesFinal($element){
