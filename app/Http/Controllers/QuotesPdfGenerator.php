@@ -74,16 +74,16 @@ class QuotesPdfGenerator extends Controller{
 					</tr>
 					<tr>
 						<td>CARGO VOLUME</td>
-						<td>{$quoteDetail->Cargo_volume}</td>
+						<td>{$quoteDetail->Cargo_volume} m3</td>
 						<td>GROSS WEIGHT</td>
-						<td>{$quoteDetail->Weight}</td>
+						<td>{$quoteDetail->Weight} KG</td>
 					</tr>
 					<tr>
 						<td>BASIC FREIGHT</td>
-						<td>{$quoteDetail->calculatedWeight}</td>
+						<td>{$quoteDetail->calculatedWeight} {$quoteDetail->tbl_export_import_land_Currency}</td>
 
 						<td>FREIGHT SURCHARGES</td>
-						<td>{$quoteDetail->surcharge}</td>
+						<td>{$quoteDetail->surcharge} {$quoteDetail->tbl_export_import_land_Currency}</td>
 					</tr>
 					<tr>
 						<td>PRE/ON CARRIAGE</td>
@@ -101,23 +101,23 @@ class QuotesPdfGenerator extends Controller{
 					</tr>
 					<tr>
 						<td>FREIGHT RATE</td>
-						<td>{$quoteDetail->fullFreightRate}</td>
+						<td>{$quoteDetail->fullFreightRate} {$quoteDetail->tbl_export_import_land_Currency}</td>
 
 						<td>PORT TAXES</td>
-						<td>{$quoteDetail->fullTaxes}</td>
+						<td>{$quoteDetail->fullTaxes} {$quoteDetail->tbl_export_import_land_Currency}</td>
 					</tr>
 					<tr>
 						<td>CARGO INSURANCE</td>
 						<td>{$insuranceString}</td>
 
 						<td>INSURANCE PREMIUM</td>
-						<td>{$quoteDetail->insurancePremium}</td>
+						<td>{$quoteDetail->insurancePremium} {$quoteDetail->tbl_export_import_land_Currency}</td>
 					</tr>
 					<tr>
 						<td></td>
 						<td></td>
 						<td>TOTAL</td>
-						<td>{$quoteDetail->totalPrice}</td>
+						<td>{$quoteDetail->totalPrice} {$quoteDetail->tbl_export_import_land_Currency}</td>
 					</tr>
 				</table>
 				";
