@@ -154,9 +154,9 @@ class QuotePrice{
 			}
 			if ($item->tbl_land_tariff_Via != "KOPER [SI]") {
 				if ($request->Weight >= 1000) {
-					$fullTaxes += round($item->tbl_export_import_land_Warfage * $request->Weight / 1000.00, 4) + $item->tbl_land_tariff_LCL_charge  * $request->Weight/1000.0 + $feeCalculated;
+					$fullTaxes += round($item->tbl_export_import_land_Warfage * $request->Weight / 1000.00, 4) + $item->tbl_export_import_land_LCL_charge  * $request->Weight/1000.0 + $feeCalculated;
 				} else {
-					$fullTaxes += round($item->tbl_export_import_land_Warfage, 4) + $item->tbl_land_tariff_LCL_charge  + $feeCalculated;
+					$fullTaxes += round($item->tbl_export_import_land_Warfage, 4) + $item->tbl_export_import_land_LCL_charge  + $feeCalculated;
 				}
 			}
 		}

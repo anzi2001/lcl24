@@ -79,7 +79,7 @@
 			</template>
 			<template v-else>
 				<div class="navElement">
-					<p>Hello {{isLogged}}</p>
+					<p>Hello {{name}}</p>
 				</div>
 				<div @click="logoutMobile" class="navElement pure-u-1-8 pointer">
 					<p>LOGOUT</p>
@@ -101,6 +101,7 @@ export default defineComponent({
 		const isMobile = ref(!media.matches)
 		const hamburgerClick = ref(false)
 		const isLogged = ref(null)
+		const name = ref(null);
 		media.addEventListener("change",mediaQuery=>{
 			isMobile.value = !mediaQuery.matches	
 		})
@@ -108,7 +109,8 @@ export default defineComponent({
 			return raw.json();
 		}).then((val)=>{
 			if(val.name != null){
-				isLogged.value  = val.name
+				isLogged.value = true
+				name.value  = val.name
 			} 
 		})
 
